@@ -1,0 +1,30 @@
+{
+  "name": "combi-server-body",
+  "version": "1.0.0",
+  "description": "Formidable middleware for Combi-Server ecosystem",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Combi-Server/combi-server-body.git"
+  },
+  "keywords": [
+    "combi-server",
+    "formidable",
+    "forms",
+    "body",
+    "parser"
+  ],
+  "author": "Louis Capitanchik",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Combi-Server/combi-server-body/issues"
+  },
+  "homepage": "https://github.com/Combi-Server/combi-server-body#readme",
+  "dependencies": {
+    "formidable": "^1.0.17",
+    "q": "^1.4.1"
+  }
+}

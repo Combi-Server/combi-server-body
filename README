@@ -1,0 +1,38 @@
+# combi-server-body
+## Formidable middleware for Combi-Server ecosystem
+
+If you need to get form data in your combi-server app \(and lets face it, that's most websites\), combi-server-body will safely
+parse form data so that you don't have to. The current release version doesn't handle file uploads, so an alternative for that
+will be needed for the time being.
+
+### Installing
+
+combi-server-body is available via npm; `npm install --save combi-server-body`
+
+### Usage
+
+Firstly, you'll need a handle to the combi-server-body object; `var body = require("combi-server-body")`.
+
+From here, there are two options: mounting the middleware immediately, or adding HTTP methods to those processed. Using the
+`body.add(verb)` and `body.remove(verb)` methods, you can add and remove request methods that will have their body parsed
+\(by default, only POST requests have their body parsed\).
+
+To use the middleware, simply call `server.use(body)` at the relevant point in your app architecture. Typically this would be
+after mounting static file middleware (to save on method calls for simple file GETs) but before mounting any routing middleware
+or other middleware that relies on body elements.
+
+e.g.
+
+``` javascript
+var server = require("combi-server")(config),
+    body = require("combi-server-body");
+    
+body.add("DELETE"); // Our API wants delete requests to have an auth token in the body
+
+server.static("./public");
+server.use(body);
+server.use(routersandstuff);
+server.listen();
+```
+
+Body data can be accessed through the `req.body` parameter in any middleware calls after it is mounted.
